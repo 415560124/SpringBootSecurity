@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rhy.security.mapper.IRoleMenuMapper">
+    <resultMap id="roleMenu" type="com.rhy.security.entity.RoleMenu">
+        <id property="id" column="id"></id>
+        <result property="roleId" column="role_id"></result>
+        <result property="menuId" column="menu_id"></result>
+        <association property="role" column="role_id" select="com.rhy.security.mapper.IRoleMapper.selectById"></association>
+    </resultMap>
+    <select id="selectByRoleMenu" resultMap="roleMenu">
+        select
+        *
+        from
+        t_role_menu rm
+        <where>
+            rm.menu_id = #{menuId}
+        </where>
+    </select>
+</mapper>

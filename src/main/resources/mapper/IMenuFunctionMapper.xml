@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rhy.security.mapper.IMenuFunctionMapper">
+    <resultMap id="menuFunction" type="com.rhy.security.entity.MenuFunction">
+        <id property="id" column="id"></id>
+        <result property="menuId" column="menu_id"></result>
+        <result property="functionId" column="function_id"></result>
+        <association property="menu" column="menu_id" select="com.rhy.security.mapper.IMenuMapper.selectById"></association>
+    </resultMap>
+    <select id="selectByMenuFunction" resultMap="menuFunction">
+        select
+        *
+        from
+        t_menu_function mf
+        <where>
+            mf.function_id = #{functionId}
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rhy.security.mapper.IRoleMapper">
+    <resultMap id="role" type="com.rhy.security.entity.Role">
+        <id property="id" column="id"></id>
+        <result property="roleName" column="role_name"></result>
+        <result property="note" column="note"></result>
+    </resultMap>
+
+    <select id="selectById" resultMap="role">
+        select
+        *
+        from
+        t_role r
+        <where>
+            <if test="id != null and id != 0">
+                r.id = #{id}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rhy.security.mapper.IUserMapper">
+    <resultMap id="user" type="com.rhy.security.entity.User">
+        <id property="id" column="id"></id>
+        <result property="userName" column="user_name"></result>
+        <result property="pwd" column="pwd"></result>
+        <result property="available" column="available"></result>
+        <collection property="userRoles" column="{userId=id}" select="com.rhy.security.mapper.IUserRoleMapper.selectByIds"></collection>
+    </resultMap>
+
+    <select id="selectByUserName" resultMap="user">
+        select
+        *
+        from
+        t_user u
+        <where>
+                u.user_name = #{userName}
+        </where>
+    </select>
+</mapper>
