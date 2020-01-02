@@ -55,7 +55,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             authorities.add(authority);
         }
         //创建UserDetails对象，设置用户名、密码、权限
-        UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getUserName(),user.getPwd(),authorities);
+        UserDetails userDetails = new JwtUserImpl(user.getUserName(),user.getPwd(),authorities);
         return userDetails;
 
     }

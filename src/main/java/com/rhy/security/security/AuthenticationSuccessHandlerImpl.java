@@ -1,8 +1,10 @@
 package com.rhy.security.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Component;
@@ -25,13 +27,19 @@ import java.util.Map;
 @Component
 public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+        //把用户信息写入上下文
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
         httpServletResponse.setStatus(200);
         httpServletResponse.setContentType("application/json;charset=UTF-8");
         Map<String,Object> res = new HashMap<>();
         res.put("code","100200");
         res.put("data",authentication);
+        res.put("token",jwtTokenUtil.createToken((UserDetails) authentication.getPrincipal()));
         res.put("msg","登录成功");
         httpServletResponse.getWriter().write(objectMapper.writeValueAsString(res));
         httpServletResponse.getWriter().close();

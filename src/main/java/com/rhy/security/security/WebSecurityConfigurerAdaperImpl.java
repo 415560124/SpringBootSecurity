@@ -17,11 +17,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -55,6 +57,16 @@ public class WebSecurityConfigurerAdaperImpl extends WebSecurityConfigurerAdapte
     @Autowired
     private PasswordEncoder passwordEncoder;
     /**
+     * 异常自定义处理
+     */
+    @Autowired
+    private AuthenticationEntryPointImpl authenticationEntryPoint;
+    /**
+     * 异常自定义处理
+     */
+    @Autowired
+    private RestAccessDeniedHandler restAccessDeniedHandler;
+    /**
      * 认证失败实现类
      */
     @Qualifier("authenticationFailureHandlerImpl")
@@ -66,6 +78,12 @@ public class WebSecurityConfigurerAdaperImpl extends WebSecurityConfigurerAdapte
     @Qualifier("authenticationSuccessHandlerImpl")
     @Autowired
     private AuthenticationSuccessHandler authenticationSuccessHandler;
+    /**
+     * JWT验证过滤器
+     */
+    @Autowired
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
     /**
      * 自己注入provider
      * 否则无法抛出UserNameNotFound异常
@@ -106,6 +124,10 @@ public class WebSecurityConfigurerAdaperImpl extends WebSecurityConfigurerAdapte
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /**
+         * 在 UsernamePasswordAuthenticationFilter 之前添加 JwtAuthenticationTokenFilter
+         */
+        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
         //初始化加载配置的服务权限
         initFunctionSetting(http);
         /** 第一段 **/
@@ -141,7 +163,13 @@ public class WebSecurityConfigurerAdaperImpl extends WebSecurityConfigurerAdapte
         .and().formLogin().successHandler(authenticationSuccessHandler)
         //禁用csrf
         .and().csrf().disable()
+        //ALWAYS：总是创建HttpSession
+        //IF_REQUIRED：Spring Security只会在需要时创建一个HttpSession
+        //NEVER：Spring Security不会创建HttpSession，但如果它已经存在，将可以使用HttpSession
+        //STATELESS：Spring Security永远不会创建HttpSession，它不会使用HttpSession来获取SecurityContext
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         ;
+        http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).accessDeniedHandler(restAccessDeniedHandler);
     }
     void initFunctionSetting(HttpSecurity http) throws Exception {
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry httpObj = http.authorizeRequests();
