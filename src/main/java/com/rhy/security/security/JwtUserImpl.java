@@ -1,7 +1,9 @@
 package com.rhy.security.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -14,6 +16,8 @@ import java.util.Collection;
  * @Version: 1.0.0
  */
 public class JwtUserImpl implements UserDetails {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     /**
      * 用户名
      */
@@ -32,7 +36,7 @@ public class JwtUserImpl implements UserDetails {
 
     public JwtUserImpl(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         this.username = username;
-        this.password = password;
+        this.password = passwordEncoder.encode(password);
         this.authorities = authorities;
     }
     @Override

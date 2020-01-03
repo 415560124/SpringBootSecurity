@@ -27,7 +27,7 @@ public class PasswordEncoderImpl implements PasswordEncoder {
     @Override
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
         String rawPasswordStr = rawPassword.toString();
-        String rawPasswordMd5 = DigestUtils.md5Hex(rawPasswordStr);
+        String rawPasswordMd5 = encode(rawPasswordStr);
         boolean res =encodedPassword.equals(rawPasswordMd5);
         return res;
     }

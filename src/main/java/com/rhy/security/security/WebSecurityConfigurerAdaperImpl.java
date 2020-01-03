@@ -5,7 +5,6 @@ import com.rhy.security.entity.MenuFunction;
 import com.rhy.security.entity.Role;
 import com.rhy.security.entity.RoleMenu;
 import com.rhy.security.mapper.IFunctionMapper;
-import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,9 +23,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Component;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsUtils;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -144,14 +145,14 @@ public class WebSecurityConfigurerAdaperImpl extends WebSecurityConfigurerAdapte
         //允许记住我功能
 //        .antMatchers("/adminspring/welcome1").access("hasAnyAuthority('ROLE_ADMIN')")
         //其他路径允许签名后访问
-        .anyRequest().permitAll()
+//        .anyRequest().permitAll()
         //使用记住我功能
         .and().rememberMe()
 
         /** 第二段 **/
         /** and代表连接词 **/
         //对于没有配置权限的其他请求允许匿名访问
-        .and().anonymous()
+//        .and().anonymous()
 
         /** 第三段 **/
         //使用spring security默认的登录页面
@@ -169,6 +170,9 @@ public class WebSecurityConfigurerAdaperImpl extends WebSecurityConfigurerAdapte
         //STATELESS：Spring Security永远不会创建HttpSession，它不会使用HttpSession来获取SecurityContext
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         ;
+        ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http.authorizeRequests();
+        //让Spring security 放行所有preflight request（cors 预检请求）
+        registry.requestMatchers(CorsUtils::isPreFlightRequest).permitAll();
         http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).accessDeniedHandler(restAccessDeniedHandler);
     }
     void initFunctionSetting(HttpSecurity http) throws Exception {
@@ -190,5 +194,16 @@ public class WebSecurityConfigurerAdaperImpl extends WebSecurityConfigurerAdapte
             set.toArray(roles);
             httpObj.antMatchers(function.getPath()).hasAnyAuthority(roles);
         }
+    }
+    @Bean
+    public CorsFilter corsFilter(){
+        UrlBasedCorsConfigurationSource configurationSource = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration cors = new CorsConfiguration();
+        cors.setAllowCredentials(true);
+        cors.addAllowedOrigin("*");
+        cors.addAllowedHeader("*");
+        cors.addAllowedMethod("*");
+        configurationSource.registerCorsConfiguration("/**", cors);
+        return new CorsFilter(configurationSource);
     }
 }
