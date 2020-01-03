@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c951d00-2111-4068-b900-677673c64ae0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/JwtAuthenticationTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/JwtAuthenticationTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/JwtTokenUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/JwtUserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/JwtUserImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/PasswordEncoderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/PasswordEncoderImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/WebSecurityConfigurerAdaperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rhy/security/security/WebSecurityConfigurerAdaperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/rhy/security/SecurityApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/rhy/security/SecurityApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +113,22 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SecurityApplication">
+  <component name="RunManager" selected="JUnit.SecurityApplicationTests">
+    <configuration name="SecurityApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="security" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rhy.security.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.rhy.security" />
+      <option name="MAIN_CLASS_NAME" value="com.rhy.security.SecurityApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SecurityApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="security" />
       <extension name="coverage">
@@ -141,6 +154,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SecurityApplicationTests" />
         <item itemvalue="JUnit.SecurityApplicationTests.contextLoads" />
       </list>
     </recent_temporary>
@@ -155,6 +169,11 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -187,6 +206,8 @@
       <workItem from="1577934111037" duration="147000" />
       <workItem from="1577968459846" duration="7424000" />
       <workItem from="1578013619056" duration="35000" />
+      <workItem from="1578044523372" duration="616000" />
+      <workItem from="1578051413922" duration="2813000" />
     </task>
     <task id="LOCAL-00001" summary="修改人：任鸿毅&#10;修改标题：security权限管理&#10;修改内容：实现 用户=&gt;角色=&gt;菜单=&gt;服务 权限控制">
       <created>1577613558063</created>
@@ -209,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577934151828</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="修改人：任鸿毅&#10;修改标题：JWT&#10;修改内容：新增JWT 整合 security">
+      <created>1578044538678</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1578044538679</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,11 +269,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="553" y="279" width="429" height="271" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1577977510005" />
-    <state x="330" y="10" key="CommitChangelistDialog2" timestamp="1577934149550">
+    <state x="330" y="10" key="CommitChangelistDialog2" timestamp="1578044537249">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="264" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1577613557185" />
-    <state x="330" y="10" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577934149550" />
+    <state x="330" y="10" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1578044537249" />
     <state x="686" y="216" key="FileChooserDialogImpl" timestamp="1578013650932">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -259,65 +287,65 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="119" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1577613402331" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1577980380641">
+    <state width="1493" height="273" key="GridCell.Tab.0.bottom" timestamp="1578054235797">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1577980380641" />
+    <state width="1493" height="273" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578054235797" />
     <state width="1476" height="526" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629508" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1577980380640">
+    <state width="1493" height="273" key="GridCell.Tab.0.center" timestamp="1578054235797">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1577980380640" />
+    <state width="1493" height="273" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578054235797" />
     <state width="1476" height="526" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629507" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1577980380639">
+    <state width="1493" height="273" key="GridCell.Tab.0.left" timestamp="1578054235797">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1577980380639" />
+    <state width="1493" height="273" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578054235797" />
     <state width="1476" height="526" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629507" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1577980380640">
+    <state width="1493" height="273" key="GridCell.Tab.0.right" timestamp="1578054235797">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1577980380640" />
+    <state width="1493" height="273" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578054235797" />
     <state width="1476" height="526" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629507" />
-    <state width="1281" height="318" key="GridCell.Tab.1.bottom" timestamp="1577980380636">
+    <state width="1493" height="273" key="GridCell.Tab.1.bottom" timestamp="1578054242838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1281" height="318" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1577980380636" />
+    <state width="1493" height="273" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578054242838" />
     <state width="1476" height="526" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629508" />
-    <state width="1281" height="318" key="GridCell.Tab.1.center" timestamp="1577980380635">
+    <state width="1493" height="273" key="GridCell.Tab.1.center" timestamp="1578054242838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1281" height="318" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1577980380635" />
+    <state width="1493" height="273" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1578054242838" />
     <state width="1476" height="526" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629508" />
-    <state width="1281" height="318" key="GridCell.Tab.1.left" timestamp="1577980380635">
+    <state width="1493" height="273" key="GridCell.Tab.1.left" timestamp="1578054242838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1281" height="318" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1577980380635" />
+    <state width="1493" height="273" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1578054242838" />
     <state width="1476" height="526" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629508" />
-    <state width="1281" height="318" key="GridCell.Tab.1.right" timestamp="1577980380635">
+    <state width="1493" height="273" key="GridCell.Tab.1.right" timestamp="1578054242838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1281" height="318" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1577980380635" />
+    <state width="1493" height="273" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1578054242838" />
     <state width="1476" height="526" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629508" />
-    <state width="1281" height="318" key="GridCell.Tab.2.bottom" timestamp="1577980380636">
+    <state width="1281" height="317" key="GridCell.Tab.2.bottom" timestamp="1578052664615">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1281" height="318" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1577980380636" />
+    <state width="1281" height="317" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578052664615" />
     <state width="1476" height="526" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629508" />
-    <state width="1281" height="318" key="GridCell.Tab.2.center" timestamp="1577980380636">
+    <state width="1281" height="317" key="GridCell.Tab.2.center" timestamp="1578052664615">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1281" height="318" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1577980380636" />
+    <state width="1281" height="317" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1578052664615" />
     <state width="1476" height="526" key="GridCell.Tab.2.center/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629508" />
-    <state width="1281" height="318" key="GridCell.Tab.2.left" timestamp="1577980380636">
+    <state width="1281" height="317" key="GridCell.Tab.2.left" timestamp="1578052664615">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1281" height="318" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1577980380636" />
+    <state width="1281" height="317" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1578052664615" />
     <state width="1476" height="526" key="GridCell.Tab.2.left/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629508" />
-    <state width="1281" height="318" key="GridCell.Tab.2.right" timestamp="1577980380636">
+    <state width="1281" height="317" key="GridCell.Tab.2.right" timestamp="1578052664615">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1281" height="318" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1577980380636" />
+    <state width="1281" height="317" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1578052664615" />
     <state width="1476" height="526" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778629508" />
     <state x="372" y="92" key="Maven.ArtifactSearchDialog" timestamp="1577879293931">
       <screen x="0" y="0" width="1536" height="824" />
@@ -331,18 +359,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="149" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1577613857208" />
-    <state x="390" y="138" width="755" height="548" key="find.popup" timestamp="1577971852929">
+    <state x="390" y="138" width="755" height="548" key="find.popup" timestamp="1578052549161">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="390" y="138" width="755" height="548" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1577971852929" />
+    <state x="390" y="138" width="755" height="548" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1578052549161" />
     <state x="334" y="228" key="new project wizard" timestamp="1577778619369">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="228" key="new project wizard/0.0.1920.1040/1920.0.1536.824@0.0.1920.1040" timestamp="1577778619369" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1577876356872">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1578052646707">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1577876356872" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1578052646707" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1577970553991">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -410,6 +438,21 @@
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.2.1.RELEASE/spring-security-core-5.2.1.RELEASE-sources.jar!/org/springframework/security/authentication/ProviderManager.java</url>
           <line>174</line>
           <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/rhy/security/SecurityApplicationTests.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/rhy/security/SecurityApplicationTests.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/rhy/security/SecurityApplicationTests.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

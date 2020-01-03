@@ -16,8 +16,6 @@ import java.util.Collection;
  * @Version: 1.0.0
  */
 public class JwtUserImpl implements UserDetails {
-    @Autowired
-    private PasswordEncoder passwordEncoder;
     /**
      * 用户名
      */
@@ -36,7 +34,7 @@ public class JwtUserImpl implements UserDetails {
 
     public JwtUserImpl(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         this.username = username;
-        this.password = passwordEncoder.encode(password);
+        this.password = password;
         this.authorities = authorities;
     }
     @Override
@@ -46,12 +44,12 @@ public class JwtUserImpl implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.username;
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return this.password;
+        return this.username;
     }
 
     /**

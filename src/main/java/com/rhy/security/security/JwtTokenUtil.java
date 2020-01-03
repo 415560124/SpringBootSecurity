@@ -3,6 +3,7 @@ package com.rhy.security.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -20,12 +21,19 @@ import java.util.Map;
 @Component
 public class JwtTokenUtil {
     /**
-     * 密匙
+     * 密匙(应该定期更换，这样即使有人解密token不知道secret就无法破解)
+     * 在我看来这个应该是十天或者半个月系统后台自动更换的
+     * 可以放在创建用户的时候一起存储
+     * 但是这样就得定期刷新数据库的secret
+     * 不好说如何更好的应用  但是定期刷新是肯定的
+     * 这里测试所以就在配置文件中设置
      */
+    @Value("${jwt.token.secret}")
     private String secret;
     /**
      * 过期时间(毫秒)
      */
+    @Value("${jwt.token.expiration}")
     private Long expiration;
     /**
      * 头部信息
@@ -162,7 +170,7 @@ public class JwtTokenUtil {
     }
 
     public void setExpiration(Long expiration) {
-        this.expiration = expiration;
+        this.expiration =expiration;
     }
 
     public String getHeader() {
